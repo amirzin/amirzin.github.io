@@ -1,0 +1,12 @@
+<% forEach(streams, function(stream) { %>
+    <tr data-element="streamTableRow" data-channel-name="<%- stream.channel.name %>" style="cursor: pointer">
+        <td>
+            <figure class="avatar avatar-lg">
+                <img src="<%- stream.preview.small %>">
+            </figure>
+        </td>
+        <td>
+            <%- stream.channel.display_name %>
+        </td>
+    </tr>
+    <% }); %>
