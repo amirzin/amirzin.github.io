@@ -1,2 +1,2 @@
 # Light Twitch client
-https://amirzin.github.io/
+https://amirzin.github.io/twitch-client/
