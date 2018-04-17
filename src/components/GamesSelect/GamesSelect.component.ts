@@ -15,12 +15,13 @@ const GamesSelect = (props: GamesSelectProps, targetElement: HTMLInputElement) =
 };
 
 const addEventListeners = (props: GamesSelectProps, targetElement: HTMLElement) => {
-    targetElement.addEventListener('change', (e) => {
-        /* let el = <HTMLElement>e.target;
-        while ((el = el.parentElement) && !el.dataset.element);
-        props.onStreamClick(el.dataset.channelName); */
+
+    const handler = (e: Event) => {
         props.onChange((<HTMLInputElement>e.target).value);
-    });
+    };
+
+    targetElement.removeEventListener('change', handler);
+    targetElement.addEventListener('change', handler);
 };
 
 export default GamesSelect;

@@ -13,11 +13,15 @@ const StreamsList = (props: StreamsListProps, targetElement: HTMLElement): void 
 };
 
 const addEventListeners = (props: StreamsListProps, targetElement: HTMLElement) => {
-    targetElement.addEventListener('click', (e) => {
+
+    const handler = (e: Event) => {
         let el = <HTMLElement>e.target;
         while ((el = el.parentElement) && !el.dataset.element);
         props.onStreamClick(el.dataset.channelName);
-    });
+    };
+
+    targetElement.removeEventListener('click', handler);
+    targetElement.addEventListener('click', handler);
 };
 
 export default StreamsList; 
