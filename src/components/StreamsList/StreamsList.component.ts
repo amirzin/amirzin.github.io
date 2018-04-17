@@ -2,7 +2,7 @@ import template from './StreamsList.component.html';
 import * as view from 'core/view';
 
 interface StreamsListProps {
-    streams: string[];
+    streams: object[];
     onStreamClick(channelName: string): void;
     forEach: any
 };

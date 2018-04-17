@@ -10,7 +10,8 @@ interface GamesSelectProps {
 
 const GamesSelect = (props: GamesSelectProps, targetElement: HTMLInputElement) => {
     view.render(template, props, targetElement);
-    targetElement.value = props.value;
+    // Add default value
+    targetElement.querySelector('select').value = props.value;
     addEventListeners(props, targetElement);
 };
 
@@ -20,8 +21,8 @@ const addEventListeners = (props: GamesSelectProps, targetElement: HTMLElement) 
         props.onChange((<HTMLInputElement>e.target).value);
     };
 
-    targetElement.removeEventListener('change', handler);
-    targetElement.addEventListener('change', handler);
+    targetElement.querySelector('select').removeEventListener('change', handler);
+    targetElement.querySelector('select').addEventListener('change', handler);
 };
 
 export default GamesSelect;

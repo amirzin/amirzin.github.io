@@ -12,8 +12,8 @@
     <div class="container">
         <div class="columns">
             <div class="collumn col-2">
-                <div class="form-group">
-                    <select onchange="getStreams(this.value)" id="gamesSelect" class="form-select select-lg">
+                <div id="gamesSelectContainer" class="form-group">
+                    <select id="gamesSelect" class="form-select select-lg">
                         <option>Choose an game</option>
                     </select>
                 </div>
@@ -33,15 +33,6 @@
             <div class="column col-10">
                 <div id="twitch-embed"></div>
             </div>
-            <!--<div class="column col-2">
-                <iframe frameborder="0"
-                        scrolling="no"
-                        id="chat_embed"
-                        src="http://www.twitch.tv/embed/qsnake/chat"
-                        height="500"
-                        width="100%">
-                </iframe>
-            </div>-->
         </div>
     </div>
 </main>
