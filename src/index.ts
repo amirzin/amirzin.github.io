@@ -38,6 +38,11 @@ interface StreamsJson {
 const getStreamsAndRender = (gameName: string = 'Dota 2') => {
     getStreams(gameName).then((json: StreamsJson) => {
         const onStreamClick = (channelName: string, channelId: string): void => {
+            const channelFromPathname = location.pathname.replace(/(\/twitch-client\/|\/)/gi, '');
+
+            if (channelFromPathname) {
+                channelName = channelFromPathname;
+            }
             player.setChannel(channelName);
             player.play();
             getVideosAndRender(channelId);
