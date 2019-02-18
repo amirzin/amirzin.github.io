@@ -1,0 +1,19 @@
+<% forEach(videos, function(video) { %>
+<% var thumbnail = video.thumbnail_url.replace('%{width}', '240').replace('%{height}', '120')  %>
+<div  class="column col-2 col-xl-4 col-lg-4 col-md-6 col-sm-12" style="padding: .4rem;" >
+    <a href="<%- video.url %>" data-element="videoCol" target="_blank" rel="noopener" data-video-id="<%- video.id %>">
+        <div class="card">
+            <div class="card-image">
+                <div style="min-height: 120px; background: url('<%- thumbnail %>'), url('https://vod-secure.twitch.tv/_404/404_processing_320x180.png'); background-size: cover; background-position: center;"
+                    class="img-responsive" alt="OS X El Capitan"></div>
+            </div>
+            <div class="card-header">
+                <div class="card-title h6">
+                    <%- video.title %>
+                </div>
+                <div class="card-subtitle text-gray"><%- video.duration %></div>
+            </div>
+        </div>
+    </a>
+</div>
+<% }); %>

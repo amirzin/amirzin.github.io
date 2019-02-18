@@ -3,10 +3,12 @@ import forEach from 'lodash.foreach';
 import * as view from './core/view';
 
 import { getStreams } from 'actions/streams.actions';
+import { getVideos } from 'actions/videos.actions';
 
 import Player from 'components/Player/Player.component';
 import GamesSelect from 'components/GamesSelect/GamesSelect.component';
 import StreamsList from 'components/StreamsList/StreamsList.component';
+import VideosList from 'components/VideosList/VideosList.component';
 
 
 let player = Player();
@@ -35,13 +37,29 @@ interface StreamsJson {
 
 const getStreamsAndRender = (gameName: string = 'Dota 2') => {
     getStreams(gameName).then((json: StreamsJson) => {
-        const onStreamClick = (channelName: string): void => {
+        const onStreamClick = (channelName: string, channelId: string): void => {
             player.setChannel(channelName);
             player.play();
+            getVideosAndRender(channelId);
         };
 
         const streamsTable = document.getElementById('streamsTable')
         StreamsList({ streams: json.streams, onStreamClick, forEach }, streamsTable);
+    });
+};
+
+interface VideosJSON {
+    data: object[]
+}
+
+const getVideosAndRender = (channelId: string) => {
+    getVideos(channelId).then((json: VideosJSON) => {
+        const videosDiv = document.getElementById('videos')
+        const onVideoClick = (videoId: string): void => {
+            player.setVideo('v' + videoId, 0);
+            player.play();
+        };
+        VideosList({ videos: json.data, onVideoClick, forEach }, videosDiv);
     });
 };
 

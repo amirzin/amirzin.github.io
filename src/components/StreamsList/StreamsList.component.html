@@ -1,5 +1,5 @@
 <% forEach(streams, function(stream) { %>
-    <tr data-element="streamTableRow" data-channel-name="<%- stream.channel.name %>" style="cursor: pointer">
+    <tr data-element="streamTableRow" data-channel-id="<%- stream.channel._id %>" data-channel-name="<%- stream.channel.name %>" style="cursor: pointer">
         <td>
             <figure class="avatar avatar-lg">
                 <img src="<%- stream.preview.small %>">

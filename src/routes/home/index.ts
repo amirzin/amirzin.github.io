@@ -1,4 +1,4 @@
-import { getStreams } from 'actions/streams';
+import { getStreams } from 'actions/streams.actions';
 
 const action = async (): Promise<void> => {
     await getStreams();
